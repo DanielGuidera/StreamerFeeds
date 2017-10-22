@@ -1,15 +1,26 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>    
+    <button v-on:click="GetToDos">Get List</button>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Home'
+    }
+  },
+  methods: {
+    GetToDos () {
+      var link = 'http://localhost:59429/api/values'
+      axios.get(link)
+        .then(function (response) {
+          alert('Clicked')
+        })
     }
   }
 }
